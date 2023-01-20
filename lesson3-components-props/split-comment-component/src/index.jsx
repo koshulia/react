@@ -11,4 +11,4 @@ const userInfo = {
   avatarUrl: 'https://avatars1.githubusercontent.com',
 };
 
-ReactDOM.render(<Comment user={userInfo} text="Good job!" date={new Date()} />, rootElement);
+ReactDOM.render(<Comment author={userInfo} text="Good job!" date={new Date()} />, rootElement);
