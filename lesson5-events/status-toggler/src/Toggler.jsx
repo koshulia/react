@@ -8,10 +8,16 @@ class Toggler extends Component {
     };
   }
 
-  toggle = () => {
-    this.setState({
-      text: (this.text = 'On'),
-    });
+  toggle = e => {
+    if (e.target.textContent === 'Off') {
+      this.setState({
+        text: (this.text = 'On'),
+      });
+    } else {
+      this.setState({
+        text: (this.text = 'Off'),
+      });
+    }
   };
 
   render() {
