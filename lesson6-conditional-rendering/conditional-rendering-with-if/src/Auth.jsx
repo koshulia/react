@@ -10,20 +10,28 @@ class Auth extends Component {
     this.state = {
       isLoggedIn: false,
     };
-
-    this.changeLoginState = () => {
-      this.setState({ isLoggedIn: !this.state.isLoggedIn });
-    };
   }
+
+  onLogin = () => {
+    this.setState({
+      isLoggedIn: true,
+    });
+  };
+
+  onLogout = () => {
+    this.setState({
+      isLoggedIn: false,
+    });
+  };
 
   render() {
     return (
       <div className="panel">
         <Greeting isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn ? (
-          <Logout changeLoginState={this.changeLoginState} />
+          <Logout onLogout={this.onLogout} />
         ) : (
-          <Login changeLoginState={this.changeLoginState} />
+          <Login onLogin={this.onLogin} />
         )}
       </div>
     );
