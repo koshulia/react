@@ -10,6 +10,10 @@ class Auth extends Component {
     this.state = {
       isLoggedIn: false,
     };
+
+    this.changeLoginState = () => {
+      this.setState({ isLoggedIn: !this.state.isLoggedIn });
+    };
   }
 
   render() {
@@ -17,9 +21,9 @@ class Auth extends Component {
       <div className="panel">
         <Greeting isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn ? (
-          <Logout isLoggedIn={this.state.isLoggedIn} />
+          <Logout changeLoginState={this.changeLoginState} />
         ) : (
-          <Login isLoggedIn={this.state.isLoggedIn} />
+          <Login changeLoginState={this.changeLoginState} />
         )}
       </div>
     );
