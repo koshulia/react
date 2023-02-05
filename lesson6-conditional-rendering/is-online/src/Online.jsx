@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class Online extends Component {
   constructor(props) {
     super(props);
-    this.onOnline = props.onOnline;
+    this.onOnline = props.isOnline;
   }
 
   render() {
     return (
-      <span className="status__text" onChange={this.onOnline}>
+      <span className="status__text" onClick={this.onOnline}>
         All good!
       </span>
     );
