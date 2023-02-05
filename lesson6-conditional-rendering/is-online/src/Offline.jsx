@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 class Offline extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.onOffline = props.onOffline;
-  // }
+  constructor(props) {
+    super(props);
+    this.goOnline = props.goOnline;
+  }
 
   render() {
     return (
