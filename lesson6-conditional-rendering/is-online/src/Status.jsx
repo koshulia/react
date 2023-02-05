@@ -20,7 +20,7 @@ class Status extends Component {
   render() {
     return (
       <div className="status">
-        {this.state.isOnline ? <Online /> : <Offline goOnline={this.goOnline} />}
+        {this.state.isOnline === true ? <Online /> : <Offline goOnline={this.goOnline} />}
       </div>
     );
   }
