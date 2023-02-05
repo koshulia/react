@@ -13,13 +13,13 @@ class Status extends Component {
 
   onOnline = () => {
     this.setState({
-      isOnline: true,
+      isOnline: false,
     });
   };
 
   onOffline = () => {
     this.setState({
-      isOnline: false,
+      isOnline: true,
     });
   };
 
@@ -29,7 +29,7 @@ class Status extends Component {
         {this.state.isOnline ? (
           <Online isOnline={this.onOnline} />
         ) : (
-          <Offline isOnline={this.onOffline} />
+          <Offline onOffline={this.onOffline} />
         )}
       </div>
     );

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Offline extends Component {
   constructor(props) {
     super(props);
-    this.onOffline = props.isOffline;
+    this.onOffline = props.onOffline;
   }
 
   render() {
