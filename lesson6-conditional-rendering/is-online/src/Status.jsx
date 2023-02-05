@@ -27,7 +27,7 @@ class Status extends Component {
     return (
       <div className="status">
         {this.state.isOnline && <Online />}
-        {!this.state.isOffline && <Offline />}
+        {!this.state.isOnline && <Offline />}
       </div>
     );
   }
