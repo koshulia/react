@@ -3,32 +3,28 @@ import Online from './Online';
 import Offline from './Offline';
 
 class Status extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      isOnline: false,
-    };
-  }
+  //   this.state = {
+  //     isOnline: false,
+  //   };
+  // }
 
-  onOnline = () => {
-    this.setState({
-      isOnline: false,
-    });
-  };
+  // onOnline = () => {
+  //   this.setState({
+  //     isOnline: false,
+  //   });
+  // };
 
-  onOffline = () => {
-    this.setState({
-      isOnline: true,
-    });
-  };
+  // onOffline = () => {
+  //   this.setState({
+  //     isOnline: true,
+  //   });
+  // };
 
   render() {
-    return (
-      <div className="status">
-        {this.state.isOnline ? <Online /> : <Offline onOffline={this.onOffline} />}
-      </div>
-    );
+    return <div className="status">{this.state.isOnline ? <Online /> : <Offline />}</div>;
   }
 }
 
