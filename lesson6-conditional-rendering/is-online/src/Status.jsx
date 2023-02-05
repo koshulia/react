@@ -7,13 +7,13 @@ class Status extends Component {
     super(props);
 
     this.state = {
-      isOnline: true,
+      isOnline: false,
     };
   }
 
   onOnline = () => {
     this.setState({
-      isOnline: false,
+      isOnline: true,
     });
   };
 
