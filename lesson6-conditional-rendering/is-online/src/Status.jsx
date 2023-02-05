@@ -8,7 +8,7 @@ class Status extends Component {
 
     this.state = {
       isOnline: true,
-      isOffline: false,
+      isOffline: true,
     };
   }
 
@@ -27,7 +27,7 @@ class Status extends Component {
     return (
       <div className="status">
         {this.state.isOnline && <Online />}
-        {this.state.isOffline && <Offline />}
+        {!this.state.isOffline && <Offline />}
       </div>
     );
   }
