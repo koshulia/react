@@ -9,10 +9,10 @@ class Offline extends Component {
   render() {
     return (
       <>
-        <span className="status__text">Offline</span>
-        <button className="status__btn" onClick={this.onOffline}>
-          Reconnect
-        </button>
+        <span className="status__text" onChange={this.onOffline}>
+          Offline
+        </span>
+        <button className="status__btn">Reconnect</button>
       </>
     );
   }

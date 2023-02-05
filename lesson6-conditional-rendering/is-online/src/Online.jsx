@@ -8,7 +8,7 @@ class Online extends Component {
 
   render() {
     return (
-      <span className="status__text" onClick={this.onOnline}>
+      <span className="status__text" onChange={this.onOnline}>
         All good!
       </span>
     );
