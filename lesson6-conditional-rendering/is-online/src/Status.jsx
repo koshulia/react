@@ -7,32 +7,31 @@ class Status extends Component {
     super(props);
 
     this.state = {
-      isOnline: false,
+      isOnline: true,
+      isOffline: false,
     };
   }
 
-  onOnline = () => {
-    this.setState({
-      isOnline: true,
-    });
-  };
+  // onOnline = () => {
+  //   this.setState({
+  //     isOnline: true,
+  //   });
+  // };
 
-  onOffline = () => {
-    this.setState({
-      isOnline: true,
-    });
-  };
+  // onOffline = () => {
+  //   this.setState({
+  //     isOnline: true,
+  //   });
+  // };
 
   render() {
-    return (
-      <div className="status">
-        {this.state.isOnline ? (
-          <Online onOnline={this.onOnline} />
-        ) : (
-          <Offline onOffline={this.onOffline} />
-        )}
-      </div>
-    );
+    let status;
+    if (this.state.isOnline) {
+      status = <Online />;
+    } else if (!this.state.isOffline) {
+      status = <Offline />;
+    }
+    return <div className="status">{status}</div>;
   }
 }
 
