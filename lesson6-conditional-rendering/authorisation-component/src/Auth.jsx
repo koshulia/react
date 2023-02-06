@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Greeting from './Greeting';
 import Login from './Login';
 import Logout from './Logout';
+import Spinner from './Spinner';
 
 class Auth extends Component {
   constructor(props) {
@@ -9,13 +9,21 @@ class Auth extends Component {
 
     this.state = {
       isLoggedIn: false,
+      spinner: false,
     };
   }
 
   onLogin = () => {
     this.setState({
-      isLoggedIn: true,
+      spinner: true,
     });
+
+    setTimeout(() => {
+      this.setState({
+        isLoggedIn: true,
+        spinner: false,
+      });
+    }, 2000);
   };
 
   onLogout = () => {
@@ -25,29 +33,19 @@ class Auth extends Component {
   };
 
   render() {
-    return (
-      <div className="panel">
-        {this.state.isLoggedIn ? (
-          <Logout onLogout={this.onLogout} />
-        ) : (
-          <Login onLogin={this.onLogin} />
-        )}
-      </div>
-    );
+    let button;
+    if (this.state.isLoggedIn) {
+      button = <Logout onLogout={this.onLogout} />;
+    } else {
+      if (this.state.spinner) {
+        button = <Spinner size={'45px'} />;
+      } else {
+        button = <Login onLogin={this.onLogin} />;
+      }
+    }
+
+    return <div className="panel">{button}</div>;
   }
 }
 
 export default Auth;
-
-// const button = this.state.isLoggedIn ? (
-//   <button onClick={this.handleLogout}>Logout</button>
-// ) : (
-//   <button onClick={this.handleLogin}>Login</button>
-// );
-
-// let button;
-// if (this.state.isLoggedIn) {
-//   button = <button onClick={this.handleLogout}>Logout</button>;
-// } else {
-//   button = <button onClick={this.handleLogin}>Login</button>;
-// }
