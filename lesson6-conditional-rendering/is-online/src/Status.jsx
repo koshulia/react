@@ -6,7 +6,7 @@ class Status extends Component {
   constructor(props) {
     super(props);
 
-    this.isOnline = true;
+    this.isOnline = props.isOnline;
   }
 
   render() {
