@@ -9,20 +9,22 @@ class Auth extends Component {
 
     this.state = {
       isLoggedIn: false,
-      spinner: false,
+      isLoading: false,
     };
   }
 
   onLogin = () => {
     this.setState({
-      spinner: true,
+      isLoading: true,
     });
 
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       this.setState({
         isLoggedIn: true,
-        spinner: false,
+        isLoading: false,
       });
+
+      clearTimeout(timerId);
     }, 2000);
   };
 
@@ -37,7 +39,7 @@ class Auth extends Component {
     if (this.state.isLoggedIn) {
       button = <Logout onLogout={this.onLogout} />;
     } else {
-      button = this.state.spinner ? <Spinner size={'45px'} /> : <Login onLogin={this.onLogin} />;
+      button = this.state.isLoading ? <Spinner size={'45px'} /> : <Login onLogin={this.onLogin} />;
     }
 
     return <div className="panel">{button}</div>;
