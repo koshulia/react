@@ -6,14 +6,16 @@ class ConnectionStatus extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('offline', this.onOffline);
+    window.addEventListener('offline', this.onConnectionStatus);
+    window.addEventListener('online', this.onConnectionStatus);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('offline', this.onOffline);
+    window.removeEventListener('offline', this.onConnectionStatus);
+    window.removeEventListener('online', this.onConnectionStatus);
   }
 
-  onOffline = e => {
+  onConnectionStatus = e => {
     this.setState({
       connection: e.target.navigator.onLine,
     });
