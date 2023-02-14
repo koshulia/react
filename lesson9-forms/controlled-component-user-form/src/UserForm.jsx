@@ -20,7 +20,10 @@ class UserForm extends Component {
 
   render() {
     return (
-      <form className="login-form" onSubmit={this.props.onSubmit}>
+      <form
+        className="login-form"
+        onSubmit={value => this.props.onSubmit({ formValue: value, state: this.state })}
+      >
         <h1 className="form-title">Profile</h1>
 
         <div className="form-control">
