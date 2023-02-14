@@ -3,8 +3,6 @@ import UserForm from './UserForm';
 
 class App extends Component {
   CreateUser = obj => {
-    obj.preventDefault();
-
     console.log(obj);
   };
 
