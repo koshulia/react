@@ -3,9 +3,9 @@ import UserForm from './UserForm';
 
 class App extends Component {
   CreateUser = obj => {
-    // obj.formValue.preventDefault();
+    obj.formValue.preventDefault();
 
-    console.log(obj);
+    console.log(obj.state);
   };
 
   render() {
