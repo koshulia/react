@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Game from './Game';
 import './index.css';
 
-function calculateWinner(squares) {
+const calculateWinner = squares => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -22,7 +22,7 @@ function calculateWinner(squares) {
     }
   }
   return null;
-}
+};
 
 const root = document.querySelector('#root');
 ReactDOM.render(<Game calculateWinner={calculateWinner} />, root);
