@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import Game from './Game';
 import './index.css';
 
@@ -24,5 +24,5 @@ function calculateWinner(squares) {
   return null;
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Game calculateWinner={calculateWinner} />);
+const root = document.querySelector('#root');
+ReactDOM.render(<Game calculateWinner={calculateWinner} />, root);
