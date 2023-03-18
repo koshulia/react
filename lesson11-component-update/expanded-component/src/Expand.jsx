@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 class Expand extends Component {
   state = {
@@ -22,9 +22,9 @@ class Expand extends Component {
 
           <button className="expand__toggle-btn" onClick={this.toggleExpansion}>
             {this.state.isShown ? (
-              <FontAwesomeIcon icon={solid('chevron-up')} />
+              <i className="fa-solid fa-chevron-up"></i>
             ) : (
-              <FontAwesomeIcon icon={solid('chevron-down')} />
+              <i className="fa-solid fa-chevron-down"></i>
             )}
           </button>
         </div>
