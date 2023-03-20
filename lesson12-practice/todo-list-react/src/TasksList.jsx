@@ -25,25 +25,15 @@ class TasksList extends Component {
     // 2. post object to server
     // 3. fetch list from server
 
-    // const { tasks } = this.state;
     const newTask = {
       text: text,
       done: false,
     };
 
     createTask(newTask).then(() => this.fetchTasks());
-
-    // const updatedTasks = tasks.concat(newTask);
-    // this.setState({
-    //   tasks: updatedTasks,
-    // });
   };
 
   handleTaskStatusChange = id => {
-    // 1. find task in a list
-    // 2. toggle done value
-    // 3. save updated list
-
     // 1. find task in state by id
     // 2. create updated task
     // 3. update task on server
@@ -56,29 +46,10 @@ class TasksList extends Component {
     };
 
     updateTask(id, updatedTask).then(() => this.fetchTasks());
-
-    // {
-    //   if (task.id === id) {
-    //     return { ...task, done: !task.done };
-    //   }
-    //   return task;
-    // });
-
-    // this.setState({
-    //   tasks: updatedTasks,
-    // });
   };
 
   handleTaskDelete = id => {
-    // 1. filter tasks
-    // 2. update state
-
     deleteTask(id).then(() => this.fetchTasks());
-
-    //     const updatedTasks = this.state.tasks.filter(task => task.id !== id);
-    //     this.setState({
-    //       tasks: updatedTasks,
-    //     });
   };
 
   render() {
