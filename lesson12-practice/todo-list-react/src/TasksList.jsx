@@ -1,57 +1,42 @@
 import React, { Component } from 'react';
 import CreateTaskInput from './CreateTaskInput';
 import Task from './Task';
-
-// const baseUrl = 'https://63b4cded0f49ecf50894549c.mockapi.io/tasks';
+import { createTask, deleteTask, fetchTasksList, updateTask } from './TasksGateway';
 
 class TasksList extends Component {
   state = {
-    tasks: [
-      { text: 'Buy milk', done: false, id: 1 },
-      { text: 'Pick up Tom from airport', done: false, id: 2 },
-      { text: 'Visit party', done: false, id: 3 },
-      { text: 'Visit doctor', done: true, id: 4 },
-      { text: 'Buy meat', done: true, id: 5 },
-    ],
+    tasks: [],
+  };
+
+  componentDidMount() {
+    this.fetchTasks();
+  }
+
+  fetchTasks = () => {
+    fetchTasksList().then(tasksList => {
+      this.setState({
+        tasks: tasksList,
+      });
+    });
   };
 
   onCreate = text => {
     // 1. create task object
     // 2. post object to server
     // 3. fetch list from server
-    const { tasks } = this.state;
+
+    // const { tasks } = this.state;
     const newTask = {
-      text,
+      text: text,
       done: false,
     };
 
-    // fetch(baseUrl, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json;utc-8',
-    //   },
-    //   body: JSON.stringify(newTask),
-    // }).then(responce => {
-    //   if (responce.ok) {
-    //     fetch(baseUrl)
-    //       .then(res => {
-    //         if (res.ok) {
-    //           return responce.json();
-    //         }
-    //       })
-    //       .then(tasksList => {
-    //         this.setState({
-    //           tasks: tasksList,
-    //         });
-    //       });
-    //   }
-    //   throw new Error('Failed to create task');
-    // });
+    createTask(newTask).then(() => this.fetchTasks());
 
-    const updatedTasks = tasks.concat(newTask);
-    this.setState({
-      tasks: updatedTasks,
-    });
+    // const updatedTasks = tasks.concat(newTask);
+    // this.setState({
+    //   tasks: updatedTasks,
+    // });
   };
 
   handleTaskStatusChange = id => {
@@ -59,26 +44,41 @@ class TasksList extends Component {
     // 2. toggle done value
     // 3. save updated list
 
-    const updatedTasks = this.state.tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, done: !task.done };
-      }
-      return task;
-    });
+    // 1. find task in state by id
+    // 2. create updated task
+    // 3. update task on server
+    // 4. fetch updated list
 
-    this.setState({
-      tasks: updatedTasks,
-    });
+    const { done, text } = this.state.tasks.find(task => task.id === id);
+    const updatedTask = {
+      text,
+      done: !done,
+    };
+
+    updateTask(id, updatedTask).then(() => this.fetchTasks());
+
+    // {
+    //   if (task.id === id) {
+    //     return { ...task, done: !task.done };
+    //   }
+    //   return task;
+    // });
+
+    // this.setState({
+    //   tasks: updatedTasks,
+    // });
   };
 
   handleTaskDelete = id => {
     // 1. filter tasks
     // 2. update state
 
-    const updatedTasks = this.state.tasks.filter(task => task.id !== id);
-    this.setState({
-      tasks: updatedTasks,
-    });
+    deleteTask(id).then(() => this.fetchTasks());
+
+    //     const updatedTasks = this.state.tasks.filter(task => task.id !== id);
+    //     this.setState({
+    //       tasks: updatedTasks,
+    //     });
   };
 
   render() {
